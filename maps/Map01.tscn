@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://terrain/terrain_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://tanks/Player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,11 @@
 [sub_resource type="Curve2D" id=1]
 _data = {
 "points": PoolVector2Array( 7.24455, -22.0486, -7.24455, 22.0486, 1859.43, 751.252, -5.95275, -25.7953, 5.95275, 25.7953, 1856.25, 1040.48, -29.3669, -0.7937, 29.3669, 0.7937, 1901.81, 1084.98, -38.4945, 1.5874, 38.4945, -1.5874, 2965.99, 1088.16, 0.7937, 13.0961, -0.7937, -13.0961, 3008.37, 1051.08, -0.793701, 13.0961, 0.793701, -13.0961, 3007.31, 1006.58, -25.3984, 3.1748, 25.3984, -3.1748, 3048.63, 964.204, -24.5685, -7.55953, 24.5685, 7.55953, 3474.93, 959.966, -9.76439, 14.4891, 9.76439, -14.4891, 3521.55, 923.944, -2.83482, 30.8681, 2.83482, -30.8681, 3520.49, 752.311, 22.6786, -4.7247, -22.6786, 4.7247, 3466.46, 705.695, 27.7183, 3.1498, -27.7183, -3.1498, 1903.87, 704.635, 0, 0, 0, 0, 1859.43, 751.252 )
+}
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 8.01809, -75.7264, -8.01809, 75.7264, 1652.23, 677.178, -3.29449, -9.6976, 3.29449, 9.6976, 1656.01, 1111.36, -34.745, -17.3725, 34.745, 17.3725, 1689.42, 1151.44, -37.4177, 20.9361, 37.4177, -20.9361, 2256.39, 1149.55, -13.3635, 24.4997, 13.3635, -24.4997, 2294.18, 1111.12, 11.5817, 40.9813, -11.5817, -40.9813, 2294.61, 675.745, 10.6908, 1.7818, -10.6908, -1.7818, 2252.61, 637.518, 27.1724, -7.12719, -27.1724, 7.12719, 1690.06, 637.046, 0, 0, 0, 0, 1652.23, 677.178 )
 }
 
 [node name="Map01" type="Node2D"]
@@ -34,3 +39,16 @@ rotation = 1.78781
 
 [node name="EnemyTank" parent="Paths/Path2D/PathFollow2D" instance=ExtResource( 4 )]
 detect_radius = 400
+
+[node name="Path2D2" type="Path2D" parent="Paths"]
+position = Vector2( -951.451, 66.3867 )
+curve = SubResource( 2 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Paths/Path2D2"]
+position = Vector2( 1652.23, 677.178 )
+rotation = 1.66658
+
+[node name="EnemyTank" parent="Paths/Path2D2/PathFollow2D" instance=ExtResource( 4 )]
+detect_radius = 400
+
+[connection signal="shoot" from="Player" to="." method="_on_Tank_shoot"]
