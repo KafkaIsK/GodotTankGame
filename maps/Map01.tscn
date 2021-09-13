@@ -52,3 +52,5 @@ rotation = 1.66658
 detect_radius = 400
 
 [connection signal="shoot" from="Player" to="." method="_on_Tank_shoot"]
+[connection signal="shoot" from="Paths/Path2D/PathFollow2D/EnemyTank" to="." method="_on_Tank_shoot"]
+[connection signal="shoot" from="Paths/Path2D2/PathFollow2D/EnemyTank" to="." method="_on_Tank_shoot"]

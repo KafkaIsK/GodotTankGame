@@ -2,13 +2,14 @@
 
 [ext_resource path="res://assets/onlyObjects_retina_rotated.png" type="Texture" id=1]
 [ext_resource path="res://bullets/Bullet.tscn" type="PackedScene" id=2]
-[ext_resource path="res://bullets/PlayerBullet.gd" type="Script" id=3]
+[ext_resource path="res://bullets/EnemyBullet.gd" type="Script" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 7.9375
-height = 12.75
+radius = 7.78603
+height = 11.2813
 
-[node name="PlayerBullet" instance=ExtResource( 2 )]
+[node name="EnemyBullet" instance=ExtResource( 2 )]
+collision_layer = 8
 script = ExtResource( 3 )
 speed = 650
 damage = 10
@@ -18,8 +19,9 @@ lifetime = 0.5
 rotation = 3.14159
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 308, 359, 28, 16 )
+region_rect = Rect2( 308, 375, 28, 16 )
 
 [node name="CollisionShape2D" parent="." index="1"]
 rotation = 1.5708
+scale = Vector2( 1, 1.00661 )
 shape = SubResource( 1 )
