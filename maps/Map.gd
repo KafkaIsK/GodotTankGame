@@ -20,3 +20,6 @@ func _on_Tank_shoot(bullet, position, direction):
 	add_child(b)
 	b.start(position, direction)
 
+
+func _on_Player_dead() -> void:
+	get_tree().reload_current_scene()

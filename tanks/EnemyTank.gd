@@ -18,11 +18,11 @@ func _ready() -> void:
 
 
 func control(delta):
-	if $LookAhead1.is_colliding() or $LookAhead2.is_colliding():
-		speed = lerp(speed, 0, 0.1)
-	else:
-		speed = lerp(speed, max_speed, 0.05)
 	if parent is PathFollow2D:
+		if $LookAhead1.is_colliding() or $LookAhead2.is_colliding():
+			speed = lerp(speed, 0, 0.1)
+		else:
+			speed = lerp(speed, max_speed, 0.05)
 		parent.set_offset(parent.get_offset() + speed * delta)
 		position = Vector2.ZERO
 	else:
@@ -47,3 +47,7 @@ func _on_DetectRadius_body_entered(body: Node) -> void:
 func _on_DetectRadius_body_exited(body: Node) -> void:
 	if body == target:
 		target = null
+
+
+func update_healthbar() -> void:
+	pass # Replace with function body.
