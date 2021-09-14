@@ -18,6 +18,7 @@ autostart = true
 [node name="Explosion" parent="." instance=ExtResource( 2 )]
 visible = false
 scale = Vector2( 0.5, 0.5 )
+animation = "smoke"
 
 [connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
 [connection signal="timeout" from="Lifetime" to="." method="_on_Lifetime_timeout"]
