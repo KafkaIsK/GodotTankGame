@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 		var current_dir = Vector2(1, 0).rotated($Turret.global_rotation)
 		$Turret.global_rotation = current_dir.linear_interpolate(target_dir, turret_speed * delta).angle()
 		if target_dir.dot(current_dir) > 0.9:
-			shoot()
+			shoot(gun_shots, gun_spread, target)
 	else:
 		return
 

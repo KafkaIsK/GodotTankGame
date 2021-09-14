@@ -15,10 +15,10 @@ func set_camera_limits():
 	$Player/Camera2D.limit_bottom = map_limits.end.y * map_cellsize.y
 
 
-func _on_Tank_shoot(bullet, position, direction):
+func _on_Tank_shoot(bullet, position, direction, target = null):
 	var b = bullet.instance()
 	add_child(b)
-	b.start(position, direction)
+	b.start(position, direction, target)
 
 
 func _on_Player_dead() -> void:

@@ -15,4 +15,4 @@ func control(delta):
 	if Input.is_action_pressed("back"):
 		velocity = Vector2(-max_speed / 2, 0).rotated(rotation)
 	if Input.is_action_just_released("click"):
-		shoot()
+		shoot(gun_shots, gun_spread)
