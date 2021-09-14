@@ -9,7 +9,6 @@ radius = 7.78603
 height = 11.2813
 
 [node name="EnemyBullet" instance=ExtResource( 2 )]
-collision_layer = 8
 script = ExtResource( 3 )
 speed = 650
 damage = 10
@@ -18,10 +17,12 @@ lifetime = 0.5
 [node name="Sprite" parent="." index="0"]
 rotation = 3.14159
 texture = ExtResource( 1 )
+offset = Vector2( -14, 0 )
 region_enabled = true
 region_rect = Rect2( 308, 375, 28, 16 )
 
 [node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( 13.741, -0.0496063 )
 rotation = 1.5708
 scale = Vector2( 1, 1.00661 )
 shape = SubResource( 1 )

@@ -6,7 +6,7 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 7.9375
-height = 12.75
+height = 11.4921
 
 [node name="PlayerBullet" instance=ExtResource( 2 )]
 script = ExtResource( 3 )
@@ -17,9 +17,11 @@ lifetime = 0.5
 [node name="Sprite" parent="." index="0"]
 rotation = 3.14159
 texture = ExtResource( 1 )
+offset = Vector2( -14, 0 )
 region_enabled = true
 region_rect = Rect2( 308, 359, 28, 16 )
 
 [node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( 14.0507, -0.0305042 )
 rotation = 1.5708
 shape = SubResource( 1 )

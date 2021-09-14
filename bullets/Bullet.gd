@@ -21,7 +21,10 @@ func _process(delta: float) -> void:
 
 
 func explode():
-	queue_free()
+	velocity = Vector2.ZERO
+	$Sprite.hide()
+	$Explosion.show()
+	$Explosion.play('smoke')
 
 
 func _on_Bullet_body_entered(body: Node) -> void:
@@ -32,3 +35,7 @@ func _on_Bullet_body_entered(body: Node) -> void:
 
 func _on_Lifetime_timeout() -> void:
 	explode()
+
+
+func _on_Explosion_animation_finished() -> void:
+	queue_free()
