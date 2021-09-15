@@ -120,6 +120,11 @@ type = 16
 [node name="Pickup" parent="Items" instance=ExtResource( 9 )]
 position = Vector2( 2349.32, 1089.23 )
 
+[node name="Pickup2" parent="Items" instance=ExtResource( 9 )]
+position = Vector2( 2580.54, 927.594 )
+type = 1
+
+[connection signal="ammo_changed" from="Player" to="HUD" method="update_ammo"]
 [connection signal="dead" from="Player" to="." method="_on_Player_dead"]
 [connection signal="health_changed" from="Player" to="HUD" method="update_healthbar"]
 [connection signal="shoot" from="Player" to="." method="_on_Tank_shoot"]
