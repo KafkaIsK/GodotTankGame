@@ -60,6 +60,12 @@ func take_damage(amount):
 		explode()
 
 
+func heal(amount):
+	health += amount
+	health = clamp(health, 0, max_health)
+	emit_signal('health_changed', health * 100 / max_health)
+
+
 func explode():
 	$CollisionShape2D.disabled = true
 	alive = false
