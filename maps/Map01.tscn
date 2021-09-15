@@ -31,6 +31,7 @@ tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -6
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 2106.59, 884.465 )
+offroad_friction = 0.0
 gun_shots = 2
 
 [node name="Paths" type="Node2D" parent="."]
@@ -45,6 +46,7 @@ rotation = 1.7878
 
 [node name="EnemyTank" parent="Paths/Path2D/PathFollow2D" instance=ExtResource( 4 )]
 position = Vector2( 0.406433, 1.84338 )
+offroad_friction = 0.0
 detect_radius = 400
 
 [node name="Path2D2" type="Path2D" parent="Paths"]
@@ -57,12 +59,14 @@ rotation = 1.66661
 
 [node name="EnemyTank" parent="Paths/Path2D2/PathFollow2D" instance=ExtResource( 4 )]
 Bullet = ExtResource( 8 )
+offroad_friction = 0.0
 detect_radius = 400
 
 [node name="HUD" parent="." instance=ExtResource( 5 )]
 
 [node name="GunTurret" parent="." instance=ExtResource( 7 )]
 position = Vector2( 2366.28, 400.267 )
+offroad_friction = 0.0
 
 [node name="Obstacles" type="Node2D" parent="."]
 

@@ -12,6 +12,7 @@ export (int) var max_speed
 export (float) var rotation_speed
 export (float) var gun_cooldown
 export (int) var max_health
+export (float) var offroad_friction
 
 export (int) var gun_shots = 1
 export (float, 0, 1.5) var gun_spread = 0.2
@@ -23,10 +24,12 @@ var velocity := Vector2.ZERO
 var can_shoot := true
 var alive := true
 var health
+var map
 
 
 func _ready() -> void:
 	health = max_health
+	$Smoke.emitting = false
 	emit_signal('health_changed', health * 100 / max_health)
 	emit_signal("ammo_changed", ammo * 100 / max_ammo)
 	$GunTimer.wait_time = gun_cooldown
@@ -55,12 +58,19 @@ func _physics_process(delta: float) -> void:
 	if not alive:
 		return
 	control(delta)
+	if map:
+		var tile = map.get_cellv(map.world_to_map(position))
+		if tile in GLOBALS.slow_terrain:
+			#velocity *= offroad_friction
+			pass
 	move_and_slide(velocity)
 
 
 func take_damage(amount):
 	health -= amount
 	emit_signal('health_changed', health * 100 / max_health)
+	if health < max_health / 2:
+		$Smoke.emitting = true
 	if health <= 0:
 		explode()
 
@@ -69,6 +79,8 @@ func heal(amount):
 	health += amount
 	health = clamp(health, 0, max_health)
 	emit_signal('health_changed', health * 100 / max_health)
+	if health > max_health / 2:
+		$Smoke.emitting = false
 
 
 func explode():

@@ -4,6 +4,7 @@ extends Node2D
 func _ready() -> void:
 	set_camera_limits()
 	Input.set_custom_mouse_cursor(load("res://assets/UI/crossair_white.png"), Input.CURSOR_ARROW, Vector2(16, 16))
+	$Player.map = $Ground
 
 
 func set_camera_limits():
