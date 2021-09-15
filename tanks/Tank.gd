@@ -29,7 +29,7 @@ var map
 
 func _ready() -> void:
 	health = max_health
-	$Smoke.emitting = false
+	$FierySmoke.emitting = false
 	emit_signal('health_changed', health * 100 / max_health)
 	emit_signal("ammo_changed", ammo * 100 / max_ammo)
 	$GunTimer.wait_time = gun_cooldown
@@ -70,7 +70,7 @@ func take_damage(amount):
 	health -= amount
 	emit_signal('health_changed', health * 100 / max_health)
 	if health < max_health / 2:
-		$Smoke.emitting = true
+		$FierySmoke.emitting = true
 	if health <= 0:
 		explode()
 
@@ -80,7 +80,7 @@ func heal(amount):
 	health = clamp(health, 0, max_health)
 	emit_signal('health_changed', health * 100 / max_health)
 	if health > max_health / 2:
-		$Smoke.emitting = false
+		$FierySmoke.emitting = false
 
 
 func explode():

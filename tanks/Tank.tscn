@@ -2,7 +2,7 @@
 
 [ext_resource path="res://tanks/Tank.gd" type="Script" id=1]
 [ext_resource path="res://effects/Explosion.tscn" type="PackedScene" id=2]
-[ext_resource path="res://effects/Smoke.tscn" type="PackedScene" id=3]
+[ext_resource path="res://effects/FierySmoke.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "init"
@@ -56,9 +56,7 @@ offroad_friction = 0.75
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
-[node name="Smoke" parent="." instance=ExtResource( 3 )]
-position = Vector2( -40, 0 )
-rotation = -3.14159
+[node name="FierySmoke" parent="." instance=ExtResource( 3 )]
 
 [node name="Turret" type="Sprite" parent="."]
 
