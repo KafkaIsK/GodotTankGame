@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://terrain/terrain_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://tanks/Player.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://tanks/GunTurret.tscn" type="PackedScene" id=7]
 [ext_resource path="res://bullets/Missile.tscn" type="PackedScene" id=8]
 [ext_resource path="res://items/Pickup.tscn" type="PackedScene" id=9]
+[ext_resource path="res://UI/MiniMap.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -32,7 +33,7 @@ tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -6
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 2106.59, 884.465 )
 offroad_friction = 0.0
-gun_shots = 2
+gun_shots = 3
 
 [node name="Paths" type="Node2D" parent="."]
 
@@ -64,9 +65,12 @@ detect_radius = 400
 
 [node name="HUD" parent="." instance=ExtResource( 5 )]
 
-[node name="GunTurret" parent="." instance=ExtResource( 7 )]
-position = Vector2( 2366.28, 400.267 )
-offroad_friction = 0.0
+[node name="MiniMap" parent="HUD" instance=ExtResource( 10 )]
+margin_left = 811.493
+margin_top = 392.657
+margin_right = 994.493
+margin_bottom = 574.657
+player = NodePath("../../Player")
 
 [node name="Obstacles" type="Node2D" parent="."]
 
@@ -109,8 +113,8 @@ rotation = 1.91201
 collision_mask = 0
 
 [node name="Obstacle8" parent="Obstacles" instance=ExtResource( 6 )]
-position = Vector2( 3682.36, 1125.33 )
-rotation = 1.91201
+position = Vector2( 3723.34, 1109.29 )
+rotation = -0.34988
 collision_mask = 0
 
 [node name="Obstacle9" parent="Obstacles" instance=ExtResource( 6 )]
@@ -128,10 +132,36 @@ position = Vector2( 2349.32, 1089.23 )
 position = Vector2( 2580.54, 927.594 )
 type = 1
 
+[node name="Pickup3" parent="Items" instance=ExtResource( 9 )]
+position = Vector2( 1475.19, 1383.51 )
+type = 1
+
+[node name="Pickup4" parent="Items" instance=ExtResource( 9 )]
+position = Vector2( 1481.75, 547.119 )
+type = 1
+
+[node name="Pickup5" parent="Items" instance=ExtResource( 9 )]
+position = Vector2( 2495.26, 488.08 )
+type = 1
+
+[node name="Pickup6" parent="Items" instance=ExtResource( 9 )]
+position = Vector2( 3103.71, 1095.79 )
+
+[node name="Turrets" type="Node2D" parent="."]
+
+[node name="GunTurret" parent="Turrets" instance=ExtResource( 7 )]
+position = Vector2( 2366.28, 400.267 )
+offroad_friction = 0.0
+
+[node name="GunTurret2" parent="Turrets" instance=ExtResource( 7 )]
+position = Vector2( 3658.42, 854.264 )
+offroad_friction = 0.0
+
 [connection signal="ammo_changed" from="Player" to="HUD" method="update_ammo"]
 [connection signal="dead" from="Player" to="." method="_on_Player_dead"]
 [connection signal="health_changed" from="Player" to="HUD" method="update_healthbar"]
 [connection signal="shoot" from="Player" to="." method="_on_Tank_shoot"]
 [connection signal="shoot" from="Paths/Path2D/PathFollow2D/EnemyTank" to="." method="_on_Tank_shoot"]
 [connection signal="shoot" from="Paths/Path2D2/PathFollow2D/EnemyTank" to="." method="_on_Tank_shoot"]
-[connection signal="shoot" from="GunTurret" to="." method="_on_Tank_shoot"]
+[connection signal="shoot" from="Turrets/GunTurret" to="." method="_on_Tank_shoot"]
+[connection signal="shoot" from="Turrets/GunTurret2" to="." method="_on_Tank_shoot"]

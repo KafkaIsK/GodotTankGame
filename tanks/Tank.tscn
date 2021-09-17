@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://tanks/Tank.gd" type="Script" id=1]
 [ext_resource path="res://effects/Explosion.tscn" type="PackedScene" id=2]
 [ext_resource path="res://effects/FierySmoke.tscn" type="PackedScene" id=3]
+[ext_resource path="res://effects/Track.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "init"
@@ -52,18 +53,34 @@ tracks/1/keys = {
 script = ExtResource( 1 )
 offroad_friction = 0.75
 
+[node name="Tracks" type="Node2D" parent="."]
+
+[node name="TrailPos" type="Position2D" parent="Tracks"]
+position = Vector2( 0, -32 )
+
+[node name="Track" parent="Tracks/TrailPos" instance=ExtResource( 4 )]
+
+[node name="TrailPos2" type="Position2D" parent="Tracks"]
+position = Vector2( 0, 32 )
+
+[node name="Track" parent="Tracks/TrailPos2" instance=ExtResource( 4 )]
+
 [node name="Body" type="Sprite" parent="."]
+z_index = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 [node name="FierySmoke" parent="." instance=ExtResource( 3 )]
+z_index = 1
 
 [node name="Turret" type="Sprite" parent="."]
+z_index = 1
 
 [node name="Muzzle" type="Position2D" parent="Turret"]
 
 [node name="Flash" type="Sprite" parent="Turret"]
 modulate = Color( 1, 1, 1, 0 )
+z_index = 1
 region_enabled = true
 
 [node name="GunTimer" type="Timer" parent="."]

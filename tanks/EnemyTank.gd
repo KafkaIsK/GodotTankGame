@@ -10,6 +10,8 @@ export (int) var detect_radius
 
 var speed = 0
 var target = null
+var minimap_icon = "mob"
+
 
 func _ready() -> void:
 	var circle = CircleShape2D.new()
@@ -47,7 +49,3 @@ func _on_DetectRadius_body_entered(body: Node) -> void:
 func _on_DetectRadius_body_exited(body: Node) -> void:
 	if body == target:
 		target = null
-
-
-func update_healthbar() -> void:
-	pass # Replace with function body.

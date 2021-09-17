@@ -5,6 +5,7 @@ signal shoot
 signal health_changed
 signal ammo_changed
 signal dead
+signal removed
 
 
 export (PackedScene) var Bullet
@@ -73,6 +74,7 @@ func take_damage(amount):
 		$FierySmoke.emitting = true
 	if health <= 0:
 		explode()
+		emit_signal("removed", self)
 
 
 func heal(amount):

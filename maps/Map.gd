@@ -6,6 +6,9 @@ func _ready() -> void:
 	Input.set_custom_mouse_cursor(load("res://assets/UI/crossair_white.png"), Input.CURSOR_ARROW, Vector2(16, 16))
 	$Player.map = $Ground
 
+	for object in get_tree().get_nodes_in_group("minimap_objects"):
+		object.connect("removed", $HUD/MiniMap, "_on_object_removed")
+
 
 func set_camera_limits():
 	var map_limits = $Ground.get_used_rect()

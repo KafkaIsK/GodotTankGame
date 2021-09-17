@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://effects/Track.gd" type="Script" id=1]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0 ), 0.0, 2.1225, 0, 0, Vector2( 1, 1 ), -0.257273, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=2]
+colors = PoolColorArray( 0, 0, 0, 0, 0, 0, 0, 0.6 )
+
+[node name="Track" type="Line2D"]
+width_curve = SubResource( 1 )
+gradient = SubResource( 2 )
+script = ExtResource( 1 )

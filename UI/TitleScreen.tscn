@@ -77,7 +77,8 @@ custom_fonts/font = SubResource( 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 3
 custom_constants/shadow_offset_y = 3
-text = "        Tank Battle"
+text = "     Battle for Milton 
+	            Keynes"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -107,7 +108,7 @@ curve = SubResource( 4 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 position = Vector2( 1064.57, 350.999 )
-rotation = 3.12592
+rotation = 3.12594
 
 [node name="EnemyTank" parent="Path2D/PathFollow2D" instance=ExtResource( 4 )]
 position = Vector2( -19.8071, -4.5321 )

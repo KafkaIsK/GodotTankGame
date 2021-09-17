@@ -19,15 +19,21 @@ gun_cooldown = 0.4
 max_health = 100
 ammo = 10
 
-[node name="Body" parent="." index="0"]
+[node name="TrailPos" parent="Tracks" index="0"]
+position = Vector2( 0, -34 )
+
+[node name="TrailPos2" parent="Tracks" index="1"]
+position = Vector2( 0, 34 )
+
+[node name="Body" parent="." index="1"]
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 308, 262, 80, 84 )
 
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" parent="." index="2"]
 shape = SubResource( 1 )
 
-[node name="Turret" parent="." index="2"]
+[node name="Turret" parent="." index="4"]
 position = Vector2( -7, 0 )
 texture = ExtResource( 2 )
 offset = Vector2( 22, 0 )
@@ -43,6 +49,6 @@ texture = ExtResource( 2 )
 offset = Vector2( 26, 0 )
 region_rect = Rect2( 584, 58, 56, 32 )
 
-[node name="Camera2D" type="Camera2D" parent="." index="4"]
+[node name="Camera2D" type="Camera2D" parent="." index="5"]
 current = true
 zoom = Vector2( 1.4, 1.4 )
